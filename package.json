@@ -1,0 +1,33 @@
+{
+  "name": "djinniauto",
+  "version": "1.0.0",
+  "description": "Automation Djinni",
+  "main": "index.js",
+  "scripts": {
+    "test:chrome": "testcafe chrome ./tests -s takeOnFails=true --reporter list",
+    "test:chrome:5": "testcafe -c 5 chrome ./tests -s takeOnFails=true",
+    "test:chrome:headless": "testcafe chrome:headless ./tests -s takeOnFails=true",
+    "test:chrome:headless:5": "testcafe -c 5 chrome:headless ./tests -s takeOnFails=true",
+    "test:chrome:mobile": "testcafe chrome:emulation:device=iphone X ./tests -s takeOnFails=true",
+    "test:opera": "testcafe opera ./tests -s takeOnFails=true",
+    "test:firefox": "testcafe firefox ./tests -s takeOnFails=true",
+    "test:edge": "testcafe edge ./tests -s takeOnFails=true",
+    "test:multiple": "testcafe chrome,firefox ./tests -s takeOnFails=true",
+    "test:chrome:qr": "testcafe remote chrome ./tests --qr-code"
+  },
+  "keywords": [
+    "AQA",
+    "Djinni"
+  ],
+  "author": "Kirill Matsokin",
+  "license": "ISC",
+  "dependencies": {
+    "jshint": "^2.13.1",
+    "prettier": "^2.3.2",
+    "testcafe": "^1.16.0",
+    "testcafe-reporter-json": "^2.2.0",
+    "testcafe-reporter-list": "^2.1.0",
+    "testcafe-reporter-nunit": "^0.1.2",
+    "testcafe-reporter-xunit": "^2.1.0"
+  }
+}
