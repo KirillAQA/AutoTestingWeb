@@ -25,7 +25,7 @@ test('User use empty fields', async t => {
 test('User can sing up', async t => {
 
     //insert your random email for success test
-    singUpPage.singUp('userii@email.com', 'password') 
+    singUpPage.singUp('useriu@email.com', 'password') 
     await t.expect(singUpPage.singUpMsg.innerText).contains('Djinni sent you an e-mail to')
     await t.expect(singUpPage.singUpForm.exists).notOk()
 
