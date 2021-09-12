@@ -2,11 +2,19 @@ import Navbar from '../page-objects/components/Navbar'
 import LoginPage from '../page-objects/pages/LoginPage'
 import Footer from '../page-objects/components/Footer'
 import Google from '../page-objects/components/Google'
+import { Role } from 'testcafe'
 
 const navbar = new Navbar()
 const loginPage = new LoginPage()
 const footer = new Footer()
 const google = new Google()
+const gitAccUser = Role ('https://djinni.co/login?from=frontpage_main', async t => {
+    await t.click('.icon-social-login__github')
+           .typeText('#login_field', 'kirillaqa89@gmail.com')
+           .typeText('#password', 'ewQ987456321')
+           .click('.js-sign-in-button')
+})
+
 
 //prettier-ignore
 fixture `Login Test`
@@ -40,9 +48,19 @@ test('User use correct data', async t => {
     footer.logOut()
 })
 
-test ('User login with google account', async t => {
+test('User login with google account', async t => {
     
     google.googleSoc('kirillaqa89@gmail.com', '123456789Qwe')
+
+    await t.expect(loginPage.logInMsg.innerText).contains('Welcome to Djinni!')
+    await t.expect(loginPage.logWrapper.exists).notOk()
+
+    footer.logOut()
+})
+
+test ('User login with git account', async t => {
+    
+    await t.useRole(gitAccUser)
 
     await t.expect(loginPage.logInMsg.innerText).contains('Welcome to Djinni!')
     await t.expect(loginPage.logWrapper.exists).notOk()
