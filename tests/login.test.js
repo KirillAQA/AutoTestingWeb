@@ -3,6 +3,7 @@ import LoginPage from '../page-objects/pages/LoginPage'
 import Footer from '../page-objects/components/Footer'
 import Google from '../page-objects/components/Google'
 import { Role } from 'testcafe'
+import { RequestLogger } from 'testcafe'
 
 const navbar = new Navbar()
 const loginPage = new LoginPage()
@@ -15,10 +16,17 @@ const gitAccUser = Role ('https://djinni.co/login?from=frontpage_main', async t 
            .click('.js-sign-in-button')
 })
 
+const url = 'https://djinni.co/';
+const logger = RequestLogger({ url, method: 'get' }, {
+    logResponseHeaders: true,
+    logResponseBody:    true
+});
+
 
 //prettier-ignore
 fixture `Login Test`
       .page `https://djinni.co/`
+      .requestHooks(logger)
       .beforeEach(async t => {
         footer.engLng()
         navbar.logTip()
@@ -58,12 +66,13 @@ test('User login with google account', async t => {
     footer.logOut()
 })
 
-test ('User login with git account', async t => {
+test('User login with git account', async t => {
     
     await t.useRole(gitAccUser)
 
     await t.expect(loginPage.logInMsg.innerText).contains('Welcome to Djinni!')
     await t.expect(loginPage.logWrapper.exists).notOk()
+    await t.expect(logger.contains(r => r.response.statusCode === 200)).ok()
 
     footer.logOut()
 })
