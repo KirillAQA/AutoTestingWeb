@@ -14,7 +14,7 @@
     "test:firefox": "testcafe firefox ./tests -s takeOnFails=true",
     "test:edge": "testcafe edge ./tests -s takeOnFails=true",
     "test:multiple": "testcafe chrome,firefox ./tests -s takeOnFails=true",
-    "test:chrome:qr": "testcafe remote chrome ./tests --qr-code"
+    "test:chrome:qr": "testcafe remote chrome ./tests --qr-code --skip-js-errors"
   },
   "keywords": [
     "AQA",

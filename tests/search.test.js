@@ -36,3 +36,15 @@ test('User use filter', async t => {
     await t.expect(logger.contains(r => r.response.statusCode === 200)).ok()
 
 })
+// These 2 tests used on the mobile device or with mobile orientation browser
+test.skip('Mobile user input text', async t => {
+    searchPage.searchInputMob('Automation QA')
+    await t.expect(searchPage.searchResultTitle.innerText).contains('Automation QA')
+
+})
+
+test.skip('Mobile user use filter', async t => {
+    searchPage.searchMobile()
+    await t.expect(searchPage.searchResultTitle.innerText).contains('QA')
+
+})
