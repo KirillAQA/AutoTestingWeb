@@ -15,7 +15,7 @@ fixture `Sing Up Test`
             await t.expect(singUpPage.singUpForm.exists).ok()
         })
 
-test.skip('User use empty fields', async t => {
+test('User use empty fields', async t => {
     
     singUpPage.singUpEmpty()
     await t.expect(singUpPage.singEmErr.innerText).contains('Please fill this field.')
