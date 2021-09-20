@@ -1,5 +1,7 @@
 import { Selector, t } from "testcafe";
+import faker from 'faker'
 
+const validEmail = faker.internet.email();
 class SingUpPage {
     constructor () {
         this.singUpForm = Selector ('.loginpage-wrapper')
@@ -12,8 +14,8 @@ class SingUpPage {
         this.singPassErr = Selector ('#p_empty_password')
 
     }
-    async singUp(email,password) {
-        await t.typeText(this.emailIn, email, { paste: true })
+    async singUp(password) {
+        await t.typeText(this.emailIn, validEmail, { paste: true, replace: true })
                .typeText(this.passIn, password, { paste: true })
                .click(this.checkBtn)
                .click(this.singUpBtn)

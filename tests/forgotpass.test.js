@@ -16,7 +16,7 @@ fixture `Forgot Password Test`
             await t.expect(forgotPassPage.forgotPassForm.exists).ok()
         })
 
-test('Use leave empty field', async t => {
+test.skip('Use leave empty field', async t => {
     
     forgotPassPage.forgotPassEmpty()
     await t.expect(forgotPassPage.forgotPassForm.exists).ok()
@@ -24,7 +24,7 @@ test('Use leave empty field', async t => {
    
 })
 
-test('User use correct email', async t => {
+test.skip('User use correct email', async t => {
     
     forgotPassPage.forgotPass('user@email.com')
     await t.expect(forgotPassPage.forgotMsg.innerText).contains('We send you a link to reset your password to')

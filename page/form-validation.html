@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form onsubmit="event.preventDefault(); return validateForm();">
+    <input id="email" type="email" size="20" placeholder="Email:">
+    <br><br>
+    <input id="password" type="password" size="20" placeholder="Password:">
+    <input type="text" id="password-status" value="Not valid" size="25" disabled><br>
+    <small>(password must contain at least one digit/lowercase/uppercase letter and be at least eight characters long)</small>
+    <br><br>
+    <input type="submit" id="submit" value="Submit">
+</form>
+
+<script>
+    var passwordInputEl  = document.querySelector('#password');
+    var passwordStatusEl = document.querySelector('#password-status');
+    var passwordRe       = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+    function validateForm () {
+        var IsValidPassword = passwordRe.test(passwordInputEl.value);
+
+        if (IsValidPassword)
+            passwordStatusEl.value = 'Valid password with a length of ' + passwordInputEl.value.length;
+        else
+            passwordStatusEl.value = 'Not valid';
+
+        return IsValidPassword;
+    }
+</script>
+</body>
+</html>

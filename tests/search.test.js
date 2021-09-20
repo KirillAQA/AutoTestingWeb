@@ -22,14 +22,14 @@ fixture `Search test`
       })
 
 
-test('User input  text request', async t => {
+test.skip('User input  text request', async t => {
 
     searchPage.searchInput('Automation QA')
     await t.expect(searchPage.searchResultTitle.innerText).contains('Automation QA')
     await t.expect(logger.contains(r => r.response.statusCode === 200)).ok()
 })
 
-test('User use filter', async t => {
+test.skip('User use filter', async t => {
 
     searchPage.searchClick()
     await t.expect(searchPage.searchResultTitle.innerText).contains('QA')

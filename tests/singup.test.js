@@ -15,7 +15,7 @@ fixture `Sing Up Test`
             await t.expect(singUpPage.singUpForm.exists).ok()
         })
 
-test('User use empty fields', async t => {
+test.skip('User use empty fields', async t => {
     
     singUpPage.singUpEmpty()
     await t.expect(singUpPage.singEmErr.innerText).contains('Please fill this field.')
@@ -25,7 +25,7 @@ test('User use empty fields', async t => {
 test('User can sing up', async t => {
 
     //insert your random email for success test
-    singUpPage.singUp('useriu@email.com', 'password') 
+    singUpPage.singUp('password') 
     await t.expect(singUpPage.singUpMsg.innerText).contains('Djinni sent you an e-mail to')
     await t.expect(singUpPage.singUpForm.exists).notOk()
 

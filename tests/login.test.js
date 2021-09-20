@@ -33,13 +33,13 @@ fixture `Login Test`
         await t.expect(loginPage.logWrapper.exists).ok()
       })
 
-test('User use invalid data', async t => {
+test.skip('User use invalid data', async t => {
 
     loginPage.logInSys ('invalid@ma.il', 'invalidpass')
     await t.expect(loginPage.errMsg.innerText).contains('User with this email does not exist.')
 })
 
-test('User use empty fields', async t => {
+test.skip('User use empty fields', async t => {
 
     loginPage.logEmpty()
     await t.expect(loginPage.errorEmailMsg.innerText).contains('Please fill this field.')
@@ -47,7 +47,7 @@ test('User use empty fields', async t => {
 
 })
 
-test('User use correct data', async t => {
+test.skip('User use correct data', async t => {
 
     loginPage.logInSys('kirillaqa89@gmail.com', '123456789Qwe')
     await t.expect(loginPage.logInMsg.innerText).contains('Welcome to Djinni!')
@@ -56,7 +56,7 @@ test('User use correct data', async t => {
     footer.logOut()
 })
 
-test('User login with google account', async t => {
+test.skip('User login with google account', async t => {
     
     google.googleSoc('kirillaqa89@gmail.com', '123456789Qwe')
 
@@ -66,7 +66,7 @@ test('User login with google account', async t => {
     footer.logOut()
 })
 
-test('User login with git account', async t => {
+test.skip('User login with git account', async t => {
     
     await t.useRole(gitAccUser)
 

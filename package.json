@@ -23,6 +23,10 @@
   "author": "Kirill Matsokin",
   "license": "ISC",
   "dependencies": {
+    "faker": "^5.1.0",
+    "generate-password": "^1.5.1",
+    "nanoid": "^3.1.16",
+    "@testing-library/testcafe": "^4.4.0",
     "jshint": "^2.13.1",
     "prettier": "^2.3.2",
     "testcafe": "^1.16.0",
